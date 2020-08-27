@@ -1,0 +1,7 @@
+requests 
+| where timestamp > ago(timespan(10.0:00:00.0))
+| where name contains " PurchaseOrder/" or name contains " PerishableStock/"
+| extend Successful = resultCode contains "200"
+| summarize count() by name, resultCode
+| order by name, resultCode asc
+
