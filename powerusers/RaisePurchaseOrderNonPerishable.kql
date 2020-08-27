@@ -1,6 +1,6 @@
 requests 
 | where timestamp > ago(timespan(10.0:00:00.0))
-| where name contains "POST PurchaseOrder/RaisePurchaseOrder"
+| where operation_Name contains "POST PurchaseOrder/RaisePurchaseOrder"
 | summarize count() by tostring(customDimensions.CustomerGuid)
 | sort by count_ desc 
 | project-rename CustomerGUID = customDimensions_CustomerGuid
