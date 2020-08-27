@@ -5,4 +5,3 @@ requests
 | sort by count_ desc 
 | project-rename CustomerGUID = customDimensions_CustomerGuid
 | project-rename Count = count_
-

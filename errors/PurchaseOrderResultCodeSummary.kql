@@ -4,4 +4,4 @@ requests
 | extend Successful = resultCode contains "200"
 | summarize count() by name, resultCode
 | order by name, resultCode asc
-
+| project-rename EndPoint = name, Count = count_, Code = resultCode
