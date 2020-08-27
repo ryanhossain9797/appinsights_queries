@@ -1,0 +1,8 @@
+requests 
+| where timestamp > ago(timespan(10.0:00:00.0))
+| where name contains " PurchaseOrder/" or name contains " PerishableStock/"
+| extend Successful = tostring(substring(resultCode,0,1) == 2)
+| summarize count() by name, Successful
+| order by name, Successful desc
+| project-rename EndPoint = name, Count = count_, Success = Successful
+| render barchart 
