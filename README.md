@@ -1,0 +1,1 @@
+# appinsights_queries
